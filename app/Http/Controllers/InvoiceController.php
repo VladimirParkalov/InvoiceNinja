@@ -197,7 +197,7 @@ class InvoiceController extends BaseController
 
     public function create(InvoiceRequest $request, $clientPublicId = 0, $isRecurring = false)
     {
-//        var_dump($request);exit;
+//       var_dump($request);exit;
         $account = Auth::user()->account;
 
         $entityType = $isRecurring ? ENTITY_RECURRING_INVOICE : ENTITY_INVOICE;

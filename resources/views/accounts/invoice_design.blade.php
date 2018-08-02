@@ -252,7 +252,7 @@
                 <div role="tabpanel" class="tab-pane" id="invoice_fields">
                     <div class="panel-body">
                       <div class="row" id="invoiceFields">
-                          @include('accounts.partials.invoice_fields_selector', ['section' => 'invoice_items', 'fields' => INVOICE_FIELDS_ITEMS])
+
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'invoice_fields', 'fields' => INVOICE_FIELDS_INVOICE])
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'client_fields', 'fields' => INVOICE_FIELDS_CLIENT])
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'account_fields1', 'fields' => INVOICE_FIELDS_ACCOUNT])
