@@ -2746,6 +2746,14 @@ $LANG = array(
     'test' => 'Test',
     'beta' => 'Beta',
     'gmp_required' => 'Exporting to ZIP requires the GMP extension',
+    'fund' => 'Fund',
+    'business_unit' => 'Business Unit',
+    'account' => 'Account',
+    'department' => 'Department',
+    'site' => 'Site',
+    'invoice_items' => 'Business Items',
+    'invoice_items_fields' => 'Business Fields',
+
 
 );
 

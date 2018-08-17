@@ -35,6 +35,19 @@ trait PresentsInvoice
                     'product.tax',
                     'product.line_total',
                 ];
+
+
+
+                $fields['invoice_items'] = [
+               'invoice_item.business_unit',
+               'invoice_item.fund',
+               'invoice_item.account',
+               'invoice_item.department',
+                    'invoice_item.site',
+                    'invoice_item.project',
+                    'invoice_item.amount'
+           ];
+
             }
 
             return $this->applyLabels($fields);
@@ -99,13 +112,19 @@ trait PresentsInvoice
                 'product.tax',
                 'product.line_total',
             ]
-            /*,
-            'invoice_items' => [
+
+
+            ,
+            INVOICE_FIELDS_ITEMS => [
                 'invoice_item.business_unit',
                 'invoice_item.fund',
                 'invoice_item.account',
                 'invoice_item.department',
-            ]*/
+                'invoice_item.site',
+                'invoice_item.project',
+                'invoice_item.amount'
+            ],
+
         ];
 
         if ($this->custom_invoice_text_label1) {
@@ -210,14 +229,17 @@ trait PresentsInvoice
                 'product.tax',
                 'product.line_total',
             ]
-            /*,
-          //  INVOICE_FIELDS_ITEMS => [
+            ,
+           INVOICE_FIELDS_ITEMS => [
                 'invoice_item.business_unit',
                 'invoice_item.fund',
                 'invoice_item.account',
                 'invoice_item.department',
+               'invoice_item.site',
+               'invoice_item.project',
+               'invoice_item.amount'
             ],
-            */
+
         ];
 
         return $this->applyLabels($fields);
@@ -355,6 +377,9 @@ trait PresentsInvoice
             'fund',
             'account',
             'department',
+            'site',
+            'project',
+            'amount',
         ];
 
         foreach ($fields as $field) {

@@ -231,6 +231,9 @@ NINJA.decodeJavascript = function(invoice, javascript)
         'accountDetails': NINJA.accountDetails(invoice),
         'accountAddress': NINJA.accountAddress(invoice),
         'invoiceDetails': NINJA.invoiceDetails(invoice),
+        //'invoiceItemsDetails': NINJA.invoiceItemsDetails(invoice),
+        'invoiceItemsLineDetails': NINJA.invoiceItemsLineDetails(invoice),
+        'invoiceItemsLineDetailsColumns': NINJA.invoiceItemsLineDetailsColumns(invoice),
         'invoiceDetailsHeight': (NINJA.invoiceDetails(invoice).length * 16) + 16,
         'invoiceLineItems': invoice.is_statement ? NINJA.statementLines(invoice) : NINJA.invoiceLines(invoice),
         'invoiceLineItemColumns': invoice.is_statement ? NINJA.statementColumns(invoice) : NINJA.invoiceColumns(invoice, javascript),
@@ -1070,6 +1073,69 @@ NINJA.invoiceDetails = function(invoice) {
 }
 
 
+NINJA.invoiceItemsLineDetailsColumns = function(invoice)
+{
+    return ["5%", "20%", "10%", "15%", "20%", "20%", "15%","5%"];
+}
+
+NINJA.invoiceItemsLineDetails = function(invoice) {
+    var grid = [[]];
+
+    grid[0].push({text: invoiceLabels.business_unit, style: ['tableHeader', 'itemTableHeader']});
+    grid[0].push({text: invoiceLabels.fund, style: ['tableHeader', 'invoiceDateTableHeader']});
+    grid[0].push({text: invoiceLabels.account, style: ['tableHeader', 'dueDateTableHeader']});
+    grid[0].push({text: invoiceLabels.department, style: ['tableHeader', 'totalTableHeader']});
+    grid[0].push({text: invoiceLabels.site, style: ['tableHeader', 'balanceTableHeader']});
+    grid[0].push({text: invoiceLabels.project, style: ['tableHeader', 'balanceTableHeader']});
+    grid[0].push({text: invoiceLabels.amount, style: ['tableHeader', 'balanceTableHeader']});
+
+    for (var i = 0; i < invoice.invoice_items.length; i++) {
+        var item = invoice.invoice_items[i];
+        var row = [];
+        var rowStyle = (i % 2 == 0) ? 'odd' : 'even';
+
+        //console.log(item);
+
+        grid.push([
+            {text: item.business_unit, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: item.fund, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: item.account, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: item.department, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: item.site, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: item.project, style:['invoiceNumber', 'productKey', rowStyle]},
+            {text: formatMoneyInvoice(invoice.total_amount, invoice), style:['subtotals', rowStyle]},
+            //{text: formatMoneyInvoice(invoice.amount, invoice), style:['subtotals', rowStyle]},
+        ]);
+    }
+//    console.log(JSON.stringify(grid));
+    return NINJA.prepareDataTable(grid, 'invoiceItemsLineDetails');
+}
+/*
+NINJA.invoiceItemsDetails = function(invoice) {
+
+        var fields = [
+            'invoice_items.business_unit',
+            'invoice_items.fund',
+            'invoice_items.account',
+            'invoice_items.department',
+            'invoice_items.site',
+            'invoice_items.project',
+            'invoice_items.amount'
+        ];
+
+    var data = [];
+
+    for (var i=0; i < fields.length; i++) {
+        var field = fields[i];
+        var value = NINJA.renderField(invoice.invoice_items, field, true);
+        if (value) {
+            data.push(value);
+        }
+    }
+//console.log(value);
+    return NINJA.prepareDataPairs(data, 'invoiceItemsDetails');
+}
+*/
 NINJA.renderField = function(invoice, field, twoColumn) {
     if (invoice.is_delivery_note) {
         var skipFields = [
@@ -1084,6 +1150,10 @@ NINJA.renderField = function(invoice, field, twoColumn) {
 
     var client = invoice.client;
     if (!client) {
+        return false;
+    }
+    var invoice_items = invoice.invoice_items;
+    if (!invoice_items) {
         return false;
     }
     var account = invoice.account;
@@ -1197,6 +1267,20 @@ NINJA.renderField = function(invoice, field, twoColumn) {
         value = account.address1;
     } else if (field == 'account.address2') {
         value = account.address2;
+    } else if (field == 'invoice_items.business_unit') {
+        value = invoice_items.business_unit;
+    } else if (field == 'invoice_items.fund') {
+        value = invoice_items.fund;
+    } else if (field == 'invoice_items.account') {
+        value = invoice_items.account;
+    } else if (field == 'invoice_items.department') {
+        value = invoice_items.department;
+    } else if (field == 'invoice_items.site') {
+        value = invoice_items.site;
+    } else if (field == 'invoice_items.project') {
+        value = invoice_items.project;
+    } else if (field == 'invoice_items.amount') {
+        value = invoice_items.amount;
     } else if (field == 'account.city_state_postal') {
         var cityStatePostal = '';
         if (account.city || account.state || account.postal_code) {

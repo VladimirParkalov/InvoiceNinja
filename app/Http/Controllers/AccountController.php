@@ -595,6 +595,15 @@ class AccountController extends BaseController
         $invoiceItem->tax_name1 = 'Tax';
         $invoiceItem->tax_rate1 = 10;
 
+        $invoiceItem->business_unit = 00030;
+        $invoiceItem->fund = 06;
+        $invoiceItem->account = 6950099;
+        $invoiceItem->department = '77100140';
+        $invoiceItem->site = '099';
+        $invoiceItem->project = 'DOG00034';
+        //$invoiceItem->amount = ;
+
+
         if ($account->custom_invoice_item_label1) {
             $invoiceItem->custom_value1 = '0000';
         }

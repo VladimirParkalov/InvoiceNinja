@@ -176,6 +176,7 @@
                     <li role="presentation"><a href="#invoice_labels" aria-controls="invoice_labels" role="tab" data-toggle="tab">{{ trans('texts.invoice_labels') }}</a></li>
                     <li role="presentation"><a href="#invoice_fields" aria-controls="invoice_fields" role="tab" data-toggle="tab">{{ trans('texts.invoice_fields') }}</a></li>
 					<li role="presentation"><a href="#product_fields" aria-controls="product_fields" role="tab" data-toggle="tab">{{ trans('texts.product_fields') }}</a></li>
+                    <li role="presentation"><a href="#invoice_items_fields" aria-controls="invoice_items_fields" role="tab" data-toggle="tab">{{ trans('texts.invoice_items_fields') }}</a></li>
                     <li role="presentation"><a href="#invoice_options" aria-controls="invoice_options" role="tab" data-toggle="tab">{{ trans('texts.invoice_options') }}</a></li>
                 </ul>
             </div>
@@ -291,6 +292,23 @@
                         </div>
 					</div>
 				</div>
+                <div role="tabpanel" class="tab-pane" id="invoice_items_fields">
+                    <div class="panel-body">
+                        <div class="row" id="productFields">
+                            @include('accounts.partials.invoice_fields_selector', ['section' => 'invoice_items_fields', 'fields' => INVOICE_FIELDS_ITEMS, 'colWidth' => 6])
+
+                        </div>
+                        <div class="row" style="padding-top:30px">
+
+                            <div class="pull-right" style="padding-right:14px">
+                                {!! Button::normal(trans('texts.reset'))->small()
+                                      ->withAttributes(['onclick' => 'sweetConfirm(function() {
+                                          resetInvoiceItemsFields();
+                                      })']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div role="tabpanel" class="tab-pane" id="invoice_options">
                     <div class="panel-body">
 

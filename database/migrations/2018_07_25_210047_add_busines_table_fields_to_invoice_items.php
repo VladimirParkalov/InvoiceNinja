@@ -33,7 +33,7 @@ class AddBusinesTableFieldsToInvoiceItems extends Migration
     public function down()
     {
         //
-        Schema::table('users', function ($table) {
+        Schema::table('invoice_items', function ($table) {
             $table->dropColumn('project');
             $table->dropColumn('business_unit');
             $table->dropColumn('fund');

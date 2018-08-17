@@ -8,6 +8,7 @@ function ViewModel(data) {
     self.account_fields1 = ko.observableArray();
     self.account_fields2 = ko.observableArray();
     self.product_fields = ko.observableArray();
+    self.invoice_items_fields = ko.observableArray();
     self.task_fields = ko.observableArray();
     window.field_map = [];
 
@@ -29,6 +30,10 @@ function ViewModel(data) {
         self.task_fields.removeAll();
     }
 
+    self.resetInvoiceItemsFields = function() {
+        self.invoice_items_fields.removeAll();
+    }
+
     self.onChange = function() {
         self.updateSelects();
         refreshPDF();
@@ -47,6 +52,7 @@ function ViewModel(data) {
             'account_fields1',
             'account_fields2',
             'product_fields',
+            'invoice_items_fields',
             'task_fields',
         ];
 
@@ -57,6 +63,8 @@ function ViewModel(data) {
                     usedFields = self.product_fields();
                 } else if (select == 'task_fields') {
                     usedFields = self.task_fields();
+                } else if (select == 'invoice_items_fields') {
+                    usedFields = self.invoice_items_fields();
                 }
                 var isUsed = usedFields.indexOf(this.value) >= 0;
                 $(this).css('color', isUsed ? '#888' : 'black');
@@ -86,6 +94,10 @@ function ViewModel(data) {
     }
     self.removeProductFields = function(item) {
         self.product_fields.remove(item);
+        self.onChange();
+    }
+    self.removeInvoiceItemsFields = function(item) {
+        self.invoice_items_fields.remove(item);
         self.onChange();
     }
     self.removeTaskFields = function(item) {
@@ -130,6 +142,13 @@ function resetProductFields() {
     window.model.onChange();
 }
 
+function resetInvoiceItemsFields() {
+    var defaultFields = {!! json_encode($account->getDefaultInvoiceFields()) !!};
+    window.model.resetInvoiceItemsFields();
+    loadFields(defaultFields, 'invoice_item');
+    window.model.onChange();
+}
+
 function loadMap(allFields) {
     for (var section in allFields) {
         if ( ! allFields.hasOwnProperty(section)) {
@@ -152,9 +171,9 @@ function loadFields(selectedFields, filter) {
             continue;
         }
 
-        if (filter == 'invoice' && (section == 'product_fields' || section == 'task_fields')) {
+        if (filter == 'invoice' && (section == 'product_fields' || section == 'task_fields'|| section == 'invoice_items_fields' )) {
             continue;
-        } else if (filter == 'product' && (section != 'product_fields' && section != 'task_fields')) {
+        } else if (filter == 'product' && (section != 'product_fields' && section != 'task_fields'&& section != 'invoice_items_fields' )) {
             continue;
         }
 
