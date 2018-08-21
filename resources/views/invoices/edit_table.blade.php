@@ -1,5 +1,5 @@
 <table class="table invoice-table {{ $isTasks ? 'task-table' : 'product-table' }}">
-<thead  {!! $isTasks ? 'style="display:none;" data-bind="visible: $root.hasTasks"' : ($invoice->has_tasks || ! empty($tasks) ? 'data-bind="visible: $root.hasItems"' : '') !!}>
+    <thead  {!! $isTasks ? 'style="display:none;" data-bind="visible: $root.hasTasks"' : ($invoice->has_tasks || ! empty($tasks) ? 'data-bind="visible: $root.hasItems"' : '') !!}>
 
 
     @if ($isTasks)
@@ -28,9 +28,9 @@
         <th style="min-width:120px;">{{ trans('texts.line_total') }}</th>
         <th style="min-width:32px;" class="hide-border"></th>
     </tr>
-</thead>
-<tbody data-bind="sortable: { data: invoice_items_{{ $isTasks ? 'with_tasks' : 'without_tasks' }}, allowDrop: false, afterMove: onDragged} {{ $isTasks ? ', visible: $root.hasTasks' : ($invoice->has_tasks || ! empty($tasks) ? ', visible: $root.hasItems' : '') }}"
-    {!! $isTasks ? 'style="display:none;border-spacing: 100px"' : '' !!}>
+    </thead>
+    <tbody data-bind="sortable: { data: invoice_items_{{ $isTasks ? 'with_tasks' : 'without_tasks' }}, allowDrop: false, afterMove: onDragged} {{ $isTasks ? ', visible: $root.hasTasks' : ($invoice->has_tasks || ! empty($tasks) ? ', visible: $root.hasItems' : '') }}"
+            {!! $isTasks ? 'style="display:none;border-spacing: 100px"' : '' !!}>
     <tr data-bind="event: { mouseover: showActions, mouseout: hideActions }" class="sortable-row">
         <td class="hide-border td-icon">
             <i style="display:none" data-bind="visible: actionsVisible() &amp;&amp;
@@ -43,10 +43,10 @@
         </td>
         <td>
             <textarea data-bind="value: notes, valueUpdate: 'afterkeydown', attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][notes]'}"
-                rows="1" cols="60" style="resize: vertical;height:42px" class="form-control word-wrap"></textarea>
-                <input type="text" data-bind="value: task_public_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][task_public_id]'}" style="display: none"/>
-                <input type="text" data-bind="value: expense_public_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][expense_public_id]'}" style="display: none"/>
-                <input type="text" data-bind="value: invoice_item_type_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][invoice_item_type_id]'}" style="display: none"/>
+                      rows="1" cols="60" style="resize: vertical;height:42px" class="form-control word-wrap"></textarea>
+            <input type="text" data-bind="value: task_public_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][task_public_id]'}" style="display: none"/>
+            <input type="text" data-bind="value: expense_public_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][expense_public_id]'}" style="display: none"/>
+            <input type="text" data-bind="value: invoice_item_type_id, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][invoice_item_type_id]'}" style="display: none"/>
         </td>
         @if ($account->showCustomField('custom_invoice_item_label1'))
             <td>
@@ -72,23 +72,23 @@
         @endif
         <td>
             <input data-bind="value: prettyCost, valueUpdate: 'afterkeydown', attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][cost]'}"
-                style="text-align: right" class="form-control invoice-item"/>
+                   style="text-align: right" class="form-control invoice-item"/>
         </td>
         <td style="display:{{ $account->hasInvoiceField($isTasks ? 'task' : 'product', $isTasks ? 'product.hours' : 'product.quantity') ? 'table-cell' : 'none' }}">
             <input data-bind="value: prettyQty, valueUpdate: 'afterkeydown', attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][qty]'}"
-                style="text-align: right" class="form-control invoice-item" name="quantity"/>
+                   style="text-align: right" class="form-control invoice-item" name="quantity"/>
         </td>
         <td style="display:{{ $account->hasInvoiceField($isTasks ? 'task' : 'product', 'product.discount') ? 'table-cell' : 'none' }}">
             <input data-bind="value: discount, valueUpdate: 'afterkeydown', attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][discount]'}"
-                style="text-align: right" class="form-control invoice-item" name="discount"/>
+                   style="text-align: right" class="form-control invoice-item" name="discount"/>
         </td>
         <td style="display:none;" data-bind="visible: $root.invoice_item_taxes.show">
-                {!! Former::select('')
-                        ->addOption('', '')
-                        ->options($taxRateOptions)
-                        ->data_bind('value: tax1, event:{change:onTax1Change}')
-                        ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
-                        ->raw() !!}
+            {!! Former::select('')
+                    ->addOption('', '')
+                    ->options($taxRateOptions)
+                    ->data_bind('value: tax1, event:{change:onTax1Change}')
+                    ->addClass($account->enable_second_tax_rate ? 'tax-select' : '')
+                    ->raw() !!}
             <input type="text" data-bind="value: tax_name1, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_name1]'}" style="display:none">
             <input type="text" data-bind="value: tax_rate1, attr: {name: 'invoice_items[{{ $isTasks ? 'T' : '' }}' + $index() + '][tax_rate1]'}" style="display:none">
             <div data-bind="visible: $root.invoice().account.enable_second_tax_rate == '1'">
@@ -107,10 +107,10 @@
         </td>
         <td style="cursor:pointer" class="hide-border td-icon">
             <i style="padding-left:2px;display:none;" data-bind="click: $parent.removeItem, visible: actionsVisible() &amp;&amp; !isEmpty()"
-            class="fa fa-minus-circle redlink" title="Remove item"/>
+               class="fa fa-minus-circle redlink" title="Remove item"/>
         </td>
     </tr>
-</tbody>
+    </tbody>
 </table>
 
 <style>
@@ -185,4 +185,3 @@
     </tr>
 
 </table>
-
