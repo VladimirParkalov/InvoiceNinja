@@ -217,7 +217,6 @@
             img.onload = function() {
                 ctx.drawImage(img, 0, 0);
                 var blankImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=';
-                // var blankImage = '';
                 var image = signatureDiv.toDataURL("image/png") || blankImage;
                 window.signatureAsPNG = invoice.invitations[0].signature_base64 = image;
                 refreshPDF();

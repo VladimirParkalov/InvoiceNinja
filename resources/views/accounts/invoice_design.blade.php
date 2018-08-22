@@ -294,7 +294,7 @@
 				</div>
                 <div role="tabpanel" class="tab-pane" id="invoice_items_fields">
                     <div class="panel-body">
-                        <div class="row" id="productFields">
+                        <div class="row" id="invoiceItemsFields">
                             @include('accounts.partials.invoice_fields_selector', ['section' => 'invoice_items_fields', 'fields' => INVOICE_FIELDS_ITEMS, 'colWidth' => 6])
 
                         </div>

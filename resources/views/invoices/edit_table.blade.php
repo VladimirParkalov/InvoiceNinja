@@ -142,7 +142,6 @@
 
 <table id="t01">
     <tr>
-    <tr>
         <th>Business Unit</th>
         <th>Fund</th>
         <th>Account</th>
@@ -150,7 +149,6 @@
         <th>Site</th>
         <th>Project</th>
         <th>Amount</th>
-    </tr>
     </tr>
     <tr>
         <td contenteditable="true">00030</td>
@@ -160,24 +158,6 @@
         <td contenteditable="true">099</td>
         <td></td>
         <td class="hide-border" data-bind="css: {'hide-border': !partial()}" style="text-align: right"><span data-bind="text: totals.total"></span></td>
-    </tr>
-    <tr>
-        <td contenteditable="true">00030</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td contenteditable="true">00030</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
     </tr>
     <tr>
         <td colspan="7">PLEASE INDICATE COST CENTRE(S) & RETURN TO ALEXANDER MOGUTNOV AT 15 FLOOR ROOM 109</td>

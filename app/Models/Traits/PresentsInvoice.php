@@ -112,8 +112,6 @@ trait PresentsInvoice
                 'product.tax',
                 'product.line_total',
             ]
-
-
             ,
             INVOICE_FIELDS_ITEMS => [
                 'invoice_item.business_unit',
