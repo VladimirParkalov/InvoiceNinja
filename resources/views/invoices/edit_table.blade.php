@@ -151,17 +151,48 @@
         <th>Amount</th>
     </tr>
     <tr>
-        <td contenteditable="true">00030</td>
-        <td contenteditable="true">06</td>
-        <td contenteditable="true">6950099</td>
-        <td contenteditable="true">77100140</td>
-        <td contenteditable="true">099</td>
-        <td></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
         <td class="hide-border" data-bind="css: {'hide-border': !partial()}" style="text-align: right"><span data-bind="text: totals.total"></span></td>
     </tr>
     <tr>
-        <td colspan="7">PLEASE INDICATE COST CENTRE(S) & RETURN TO ALEXANDER MOGUTNOV AT 15 FLOOR ROOM 109</td>
-
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td ></td>
     </tr>
-
+    <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td ></td>
+    </tr>
+    <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td ></td>
+    </tr>
+    <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td ></td>
+    </tr>
 </table>

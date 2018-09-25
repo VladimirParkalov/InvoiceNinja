@@ -31,6 +31,9 @@ function GetPdfMake(invoice, javascript, callback) {
             itemsTable = JSON.parse(itemsTable);
             json.content.splice(i+1, 0, itemsTable);
             javascript = JSON.stringify(json);
+            console.log('itemstable');
+            console.log(itemstable);
+            console.log('itemstable');
         // use the single product table for tasks
         } else {
             javascript = javascript.replace('$invoiceLineItems', '$taskLineItems');
@@ -1489,9 +1492,7 @@ NINJA.prepareDataTable = function(oldData, section) {
             newData.push(newRow);
         }
     }
-    console.log('newdata')
-    console.log(newData);
-    console.log('newdata')
+
     return newData;
 }
 

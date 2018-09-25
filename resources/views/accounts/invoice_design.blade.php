@@ -257,7 +257,7 @@
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'invoice_fields', 'fields' => INVOICE_FIELDS_INVOICE])
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'client_fields', 'fields' => INVOICE_FIELDS_CLIENT])
                           @include('accounts.partials.invoice_fields_selector', ['section' => 'account_fields1', 'fields' => INVOICE_FIELDS_ACCOUNT])
-                          @include('accounts.partials.invoice_fields_selector', ['section' => 'account_fields2', 'fields' => INVOICE_FIELDS_ACCOUNT])
+
 
                       </div>
                       <div class="row" style="padding-top:30px">
