@@ -4,11 +4,12 @@
 /config/fortrabbit
 /config/ubuntu
 /config/packages/anahkiasen/rocketeer/
-/public
 /public/logo
 /public/build
 /public/packages
 /public/vendor
+/public/css
+/public/js
 /resources/assets/bower
 /storage
 /bootstrap/compiled.php
